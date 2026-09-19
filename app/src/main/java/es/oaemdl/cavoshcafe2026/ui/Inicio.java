@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.List;
+
+import es.oaemdl.cavoshcafe2026.controller.ProductoController;
 import es.oaemdl.cavoshcafe2026.databinding.FragmentInicioBinding;
 
 public class Inicio extends Fragment {
@@ -19,6 +22,8 @@ public class Inicio extends Fragment {
     private FragmentInicioBinding binding;
     private Context context;
     private NavController navController;
+    ProductoController controller;
+    List<Producto> productos;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class Inicio extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         context = getContext();
         navController = Navigation.findNavController(view);
+        controller = new ProductoController(context);
+        productos = controller.getProductos();
 
         // Si tienes botones para navegar en esta pantalla, agrégalos aquí.
         // Las tarjetas del XML ahora se cargarán solas de forma estática.
